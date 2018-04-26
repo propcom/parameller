@@ -11,5 +11,3 @@ script:
 before_script:
 cache:
   yarn: true
-after_script:
-  - bash <(curl -s https://codecov.io/bash)

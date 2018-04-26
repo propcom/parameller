@@ -18,7 +18,7 @@ or
 
 Simply import the functions you wish to use in your project as follows:
 
-    import { getParam, getParams, removeParam, setParam, setParams } from "paramella";
+    import { getParam, getParams, removeParam, setParam, setParams } from "parameller";
     
 ### Methods
 
