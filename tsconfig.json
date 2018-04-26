@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "module": "es6",
+        "moduleResolution": "node",
+        "target": "es5",
+        "allowJs": false,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "allowUnreachableCode": false,
+        "strictNullChecks": true,
+        "sourceMap": true,
+        "noImplicitThis": true,
+        "noUnusedParameters": true,
+        "noStrictGenericChecks": false,
+        "removeComments": true,
+        "allowUnusedLabels": false,
+        "noImplicitReturns": true,
+        "strictPropertyInitialization": true
+    },
+    "exclude": ["node_modules", "**/__tests__", "src/app.ts", "dist"]
+}

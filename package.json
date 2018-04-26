@@ -1,0 +1,36 @@
+{
+	"name": "parameller",
+	"version": "1.0.0",
+	"description": "Easily parse, edit and add url query paramaters with JS, has TypeScript support",
+	"main": "dist/parameller.js",
+	"types": "dist/parameller.d.ts",
+	"scripts": {
+		"prepublish": "jest && NODE_ENV=production webpack --display-error-details -p --progress --colors",
+		"precommit": "pretty-quick --staged",
+		"start": "webpack-dev-server",
+		"build": "NODE_ENV=production webpack --display-error-details -p --progress --colors",
+		"test": "jest"
+	},
+	"files": [
+		"dist"
+	],
+	"repository": "https://github.com/propcom/parameller",
+	"author": "Samuel Woodbridge",
+	"license": "MIT",
+	"private": false,
+	"devDependencies": {
+		"@types/jasmine": "^2.8.6",
+		"@types/jest": "^22.2.0",
+		"husky": "^0.14.3",
+		"prettier": "1.11.1",
+		"pretty-quick": "^1.4.1",
+		"webpack-cli": "^2.0.12",
+		"jasmine-reporters": "^2.3.0",
+		"jest": "^22.4.2",
+		"ts-jest": "^22.4.2",
+		"ts-loader": "^4.1.0",
+		"typescript": "^2.7.2",
+		"webpack": "^4.1.1",
+		"webpack-dev-server": "^3.1.1"
+	}
+}
