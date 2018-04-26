@@ -1,13 +1,12 @@
 {
     "name": "parameller",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description":
         "Easily parse, edit and add url query paramaters with JS, has TypeScript support",
     "main": "dist/parameller.js",
     "types": "dist/parameller.d.ts",
     "scripts": {
-        "prepublish":
-            "jest && NODE_ENV=production webpack --display-error-details -p --progress --colors",
+        "prepublish": "jest && tsc",
         "precommit": "pretty-quick --staged",
         "start": "webpack-dev-server",
         "build": "tsc",
