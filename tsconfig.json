@@ -1,22 +1,27 @@
 {
     "compilerOptions": {
         "noImplicitAny": true,
-        "module": "es6",
+        "module": "commonjs",
         "moduleResolution": "node",
         "target": "es5",
         "allowJs": false,
+        "allowSyntheticDefaultImports": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "allowUnreachableCode": false,
         "strictNullChecks": true,
-        "sourceMap": true,
+        "sourceMap": false,
         "noImplicitThis": true,
         "noUnusedParameters": true,
         "noStrictGenericChecks": false,
         "removeComments": true,
         "allowUnusedLabels": false,
         "noImplicitReturns": true,
-        "strictPropertyInitialization": true
+        "strictPropertyInitialization": true,
+        "outDir": "dist",
+        "declaration": true,
+        "declarationDir": "dist"
     },
+    "files": ["src/parameller.ts"],
     "exclude": ["node_modules", "**/__tests__", "src/app.ts", "dist"]
 }
