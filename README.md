@@ -1,6 +1,6 @@
 # Parameller
 
-[![CircleCI](https://circleci.com/gh/propcom/parameller.svg?style=shield)](https://circleci.com/gh/propcom/parameller)
+[![CircleCI](https://circleci.com/gh/propcom/parameller.svg?style=shield)](https://circleci.com/gh/propcom/parameller) [![NPM](https://img.shields.io/npm/v/parameller.svg)](https://www.npmjs.com/package/parameller)
 
 Parameller makes parsing url query strings in JS simple.
 
