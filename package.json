@@ -8,7 +8,7 @@
     "scripts": {
         "prepublish": "jest && tsc",
         "precommit": "pretty-quick --staged",
-        "start": "webpack-dev-server",
+        "start": "webpack-dev-server --config ./.webpack/webpack.config.js",
         "build": "tsc",
         "test": "jest"
     },
@@ -29,6 +29,7 @@
         "typescript": "^2.7.2",
         "webpack": "^4.1.1",
         "webpack-cli": "^2.0.12",
-        "webpack-dev-server": "^3.1.1"
+        "webpack-dev-server": "^3.1.1",
+        "webpack-merge": "^4.1.2"
     }
 }
