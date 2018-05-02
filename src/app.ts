@@ -1,5 +1,7 @@
 // This is here just for development, this will not get compiled into the dist folder, only the source in propForms will.
 
-import { getParams } from "./parameller";
+import { getParam, getParams } from "./parameller";
 
-console.log(getParams());
+getParam("test", v => {
+    console.log(v);
+});

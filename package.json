@@ -1,6 +1,6 @@
 {
     "name": "parameller",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "description":
         "Easily parse, edit and add url query paramaters with JS, has TypeScript support",
     "main": "dist/parameller.js",

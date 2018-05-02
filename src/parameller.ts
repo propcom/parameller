@@ -34,8 +34,17 @@ export function getParams(): { [s: string]: string } {
     });
 }
 
-export function getParam(param: string): string | undefined {
-    return getParams()[param];
+export function getParam(
+    param: string,
+    callback?: (v: string) => void
+): string | undefined {
+    const value: string | undefined = getParams()[param];
+
+    if (typeof callback !== "undefined" && typeof value !== "undefined") {
+        callback!(value);
+    }
+
+    return value;
 }
 
 export function setParams(params: {

@@ -35,13 +35,19 @@ Output: `?test=example&name=Samuel`
 
 If the base property is set then it will prepend the base onto the query string.
 
-#### getParam(param: string): string
+#### getParam(param: string, callback?: (v: string) => void): string | undefined
 
 Example url: `http://test.com/?test=hello&example=wow`
 
     getParam("test") // returns "hello"
     getParam("example") // returns "wow"
     getParam("something") // returns undefined
+
+`getParam()` takes an optional callback that is only called if the parameter returns a value.
+
+    getParam("test", value => {
+        console.log(value) // logs "Hello"
+    })
 
 #### getParams: { [s: string]: string }
 
