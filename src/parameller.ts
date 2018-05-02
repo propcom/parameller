@@ -1,10 +1,13 @@
-function toQueryString(params: { [s: string]: string }): string {
+export function toQueryString(
+    params: { [s: string]: string },
+    base: string = ""
+): string {
     const string = Object.keys(params).map(v => {
         return `${v}=${params[v]}`;
     });
 
     if (string.length === 0) {
-        return window.location.origin + window.location.pathname;
+        return base;
     }
 
     return `?${string.join("&")}`;
@@ -38,7 +41,11 @@ export function getParam(param: string): string | undefined {
 export function setParams(params: {
     [s: string]: string;
 }): { [s: string]: string } {
-    window.history.replaceState(null, document.title, toQueryString(params));
+    window.history.replaceState(
+        null,
+        document.title,
+        toQueryString(params, window.location.origin + window.location.pathname)
+    );
     return getParams();
 }
 

@@ -18,9 +18,22 @@ or
 
 Simply import the functions you wish to use in your project as follows:
 
-    import { getParam, getParams, removeParam, setParam, setParams } from "parameller";
+    import { getParam, getParams, removeParam, setParam, setParams, toQueryString } from "parameller";
 
 ### Methods
+
+#### toQueryString(params: { [s: string]: string }, base: string = ""): string
+
+    const obj = {
+        "test": "example",
+        "name": "Samuel"
+    }
+
+    toQueryString(obj)
+
+Output: `?test=example&name=Samuel`
+
+If the base property is set then it will prepend the base onto the query string.
 
 #### getParam(param: string): string
 
