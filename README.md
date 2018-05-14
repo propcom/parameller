@@ -95,7 +95,7 @@ The following methods will push the state onto the browser history stack, useful
 
 Example url: `http://test.com/?test=hello&example=wow`
 
-    setParam("test", "goodbye")
+    pushParam("test", "goodbye")
 
 Output: `http://test.com/?test=goodbye&example=wow`
 
@@ -103,7 +103,7 @@ Output: `http://test.com/?test=goodbye&example=wow`
 
 Example url: `http://test.com/?test=hello&example=wow`
 
-    setParams({ test: "goodbye" })
+    pushParams({ test: "goodbye" })
 
 Output: `http://test.com/?test=goodbye`
 
@@ -111,6 +111,6 @@ Output: `http://test.com/?test=goodbye`
 
 Example url: `http://test.com/?test=hello&example=wow`
 
-    removeParam("test")
+    popParam("test")
 
 Output: `http://test.com/?example=wow`
