@@ -18,7 +18,11 @@ or
 
 Simply import the functions you wish to use in your project as follows:
 
-    import { getParam, getParams, removeParam, setParam, setParams, toQueryString } from "parameller";
+    import { getParam, getParams, removeParam, setParam, setParams, toQueryString, pushParam, pushParams, popParams } from "parameller";
+
+### Types
+
+    type Params = { [s: string]: string }
 
 ### Methods
 
@@ -31,7 +35,7 @@ Simply import the functions you wish to use in your project as follows:
 
     toQueryString(obj)
 
-Output: `?test=example&name=Samuel`
+Output: `test=example&name=Samuel`
 
 If the base property is set then it will prepend the base onto the query string.
 
@@ -49,13 +53,17 @@ Example url: `http://test.com/?test=hello&example=wow`
         console.log(value) // logs "Hello"
     })
 
-#### getParams: { [s: string]: string }
+#### getParams(string: string = window.location.search): Params
 
 Example url: `http://test.com/?test=hello&example=wow`
 
     getParams() // returns { test: "hello", example: "wow" }
 
-#### setParam(param: string, value: string): { [s: string]: string }
+### Replace State
+
+The following methods will replace the currently url state, history will not be preserved.
+
+#### setParam(param: string, value: string): Params
 
 Example url: `http://test.com/?test=hello&example=wow`
 
@@ -63,7 +71,7 @@ Example url: `http://test.com/?test=hello&example=wow`
 
 Output: `http://test.com/?test=goodbye&example=wow`
 
-#### setParams(params: { [s: string]: string }): { [s: string]: string }
+#### setParams(params: Params): Params
 
 Example url: `http://test.com/?test=hello&example=wow`
 
@@ -71,7 +79,35 @@ Example url: `http://test.com/?test=hello&example=wow`
 
 Output: `http://test.com/?test=goodbye`
 
-#### removeParam(param: string): { [s: string]: string }
+#### removeParam(param: string): Params
+
+Example url: `http://test.com/?test=hello&example=wow`
+
+    removeParam("test")
+
+Output: `http://test.com/?example=wow`
+
+### Push State
+
+The following methods will push the state onto the browser history stack, useful if you want to maintain back/forwards functionality.
+
+#### pushParam(param: string, value: string): Params
+
+Example url: `http://test.com/?test=hello&example=wow`
+
+    setParam("test", "goodbye")
+
+Output: `http://test.com/?test=goodbye&example=wow`
+
+#### pushParams(params: Params): Params
+
+Example url: `http://test.com/?test=hello&example=wow`
+
+    setParams({ test: "goodbye" })
+
+Output: `http://test.com/?test=goodbye`
+
+#### popParam(param: string): Params
 
 Example url: `http://test.com/?test=hello&example=wow`
 

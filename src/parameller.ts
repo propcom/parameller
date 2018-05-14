@@ -1,22 +1,28 @@
+export type Params = {
+    [s: string]: string;
+};
+
 export function toQueryString(
-    params: { [s: string]: string },
-    base: string = ""
-): string {
+    params: Params,
+    base?: string
+): string | undefined {
     const string = Object.keys(params).map(v => {
         return `${v}=${params[v]}`;
     });
 
     if (string.length === 0) {
-        return base;
+        return;
     }
 
-    return `?${string.join("&")}`;
+    const query = string.join("&");
+
+    return base ? base + query : query;
 }
 
-export function getParams(): { [s: string]: string } {
-    const search = window.location.search.split("&");
+export function getParams(string: string = window.location.search): Params {
+    const search = string.split("&");
 
-    if (!search[0]) {
+    if (!string[0]) {
         return {};
     }
 
@@ -47,32 +53,52 @@ export function getParam(
     return value;
 }
 
-export function setParams(params: {
-    [s: string]: string;
-}): { [s: string]: string } {
-    window.history.replaceState(
-        null,
-        document.title,
-        toQueryString(params, window.location.origin + window.location.pathname)
-    );
+export function setParams(params: Params): Params {
+    const url = generateUrl(params);
+
+    window.history.replaceState(null, document.title, url);
     return getParams();
 }
 
-export function setParam(
-    param: string,
-    value: string
-): { [s: string]: string } {
+export function pushParams(params: Params): Params {
+    const url = generateUrl(params);
+
+    window.history.pushState(null, document.title, url);
+
+    return getParams();
+}
+
+export function setParam(param: string, value: string): Params {
     return setParams({ ...getParams(), ...{ [param]: value } });
 }
 
-export function removeParam(param: string): { [s: string]: string } {
+export function pushParam(param: string, value: string): Params {
+    return pushParams({ ...getParams(), ...{ [param]: value } });
+}
+
+export function removeParam(param: string): Params {
+    return setParams(deleteParam(param));
+}
+
+export function popParam(param: string): Params {
+    return pushParams(deleteParam(param));
+}
+
+function generateUrl(params: Params): string {
+    return (
+        toQueryString(params, "?") ||
+        window.location.origin + window.location.pathname
+    );
+}
+
+function deleteParam(param: string): Params {
     const params = getParams();
     const keys = Object.keys(params).filter(v => {
         return v !== param;
     });
 
     if (keys.length === 0) {
-        return setParams({});
+        return {};
     }
 
     const map = keys
@@ -83,5 +109,5 @@ export function removeParam(param: string): { [s: string]: string } {
             return { ...p, ...c };
         });
 
-    return setParams(map as { [s: string]: string });
+    return map as Params;
 }
