@@ -85,8 +85,10 @@ export function popParam(param: string): Params {
 }
 
 function generateUrl(params: Params): string {
+    const url: string = window.location.origin + window.location.pathname;
+
     return (
-        toQueryString(params, "?") ||
+        toQueryString(params, url + "?") ||
         window.location.origin + window.location.pathname
     );
 }
